@@ -7,19 +7,19 @@
 //            /____/
 
 // Dog Constructor & Prototype
-function Dog (name,color,status, happy,hungry) {
+function Dog ({name,color,status, happy,hungry}) {
   this.name = name;
   this.color = color;
   this.status = status;
-  this.happy = true;
-  this.hungry = false;
+  this.happy = happy;
+  this.hungry = hungry;
 }
 
 // Instances of Dog
 // Needed: sadie, moonshine, atticus
-const sadie = new Dog('Sadie', 'black', 'normal', true, false);
-const moonshine = new Dog('Moonshine', 'black', 'normal', false , true, undefined);
-const atticus = new Dog('Atticus', 'black', 'normal', true, false, undefined);
+const sadie = new Dog({name: 'Sadie', color:'black', status:'normal', happy:true, hungry:false});
+const moonshine = new Dog({name:'Moonshine', color:'black', status:'normal', happy:false , hungry:true});
+const atticus = new Dog('Atticus', 'black', 'normal', true, false);
 //     __
 //    / /_  __  ______ ___  ____ _____  _____
 //   / __ \/ / / / __ `__ \/ __ `/ __ \/ ___/
@@ -29,7 +29,7 @@ const atticus = new Dog('Atticus', 'black', 'normal', true, false, undefined);
 // Human Constructor & Prototype
 function Human (name,cool) {
   this.name = name;
-  this.cool = true;
+  this.cool = cool;
 }
 
 // Instances of Human
@@ -40,8 +40,12 @@ const julia = new Human('Julia', true);
 // function pet(Dog) {
 //
 // }
-Human.prototype.pet = function (){
+Human.prototype.pet = function (dog) {
+dog.status = 'happy';
+};
 
+Human.prototype.feed = function(dog){
+  dog.hungry = false;
 }
 
 // module.exports = {
